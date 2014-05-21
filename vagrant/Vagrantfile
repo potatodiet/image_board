@@ -1,0 +1,27 @@
+box         = 'trusty-server-cloudimg-amd64-vagrant-disk1.box'
+url         = 'http://cloud-images.ubuntu.com/vagrant/trusty/current/'\
+              'trusty-server-cloudimg-amd64-vagrant-disk1.box'
+hostname    = 'image-board'
+domain      = 'pyrohail.com'
+ip          = '192.168.0.42'
+ram         = '512'
+source_path = '../source'
+box_path    = '/home/vagrant/code/image_board'
+
+Vagrant.configure('2') do |config|
+  config.vm.box = box
+  config.vm.box_url = url
+  config.vm.host_name = hostname + '.' + domain
+  config.vm.network(:private_network, ip: ip)
+  config.vm.synced_folder(source_path, box_path)
+
+  config.vm('virtualbox') do |v|
+    v.customize [
+      'modifyvm', :id,
+      '--name', hostname,
+      '--memory', ram
+    ]
+  end
+
+  config.vm.provision('shell', path: 'script.sh')
+end

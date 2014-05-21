@@ -1,0 +1,16 @@
+<div class="large-12 columns">
+  <% @images.each_slice(6) do |grouped_images| %>
+    <% grouped_images.each do |image| %>
+      <div class="small-6 medium-3 large-2 columns text-center end list-image"
+          id="<%= image.id.to_s %>">
+        <%= link_to(image_path(image)) do %>
+          <%= image_tag(image.asset.thumbnail.url) %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="large-12 columns">
+  <%= will_paginate(@images, renderer: FoundationPagination::Rails) %>
+</div>

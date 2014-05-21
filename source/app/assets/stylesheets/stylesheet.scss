@@ -1,0 +1,58 @@
+@import "foundation";
+
+#navbar {
+  margin-bottom: 30px;
+}
+
+#image-info h2 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+#image-info ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+#image-info section:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+@media #{$small-up} {
+  .list-image {
+    margin-bottom: 10px;
+  }
+}
+
+@media #{$medium-up} {
+  .list-image {
+    margin-bottom: 30px;
+  }
+}
+
+@media #{$large-up} {
+  .list-image {
+    margin-bottom: 40px;
+  }
+}
+
+#image-container {
+  margin-bottom: 40px;
+}
+
+#comments-container .pagination {
+  margin-top: 40px;
+}
+
+.comment-top {
+  border-radius: 3px;
+  border: 1px solid #999;
+  background-color: #FAFAFA;
+  padding: 5px;
+  margin-bottom: 7px;
+}
+
+.comment-body {
+  padding-left: 5px;
+  margin-bottom: 17px;
+}

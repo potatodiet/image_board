@@ -1,0 +1,47 @@
+<div class="large-3 columns" id="image-info">
+  <section id="image-details">
+    <h2>Details</h2>
+    <ul>
+      <li>Uploader: <%= link_to(@image.uploader.username, user_path(@image.uploader)) %></li>
+      <!-- Display time as May 13, 2014 -->
+      <li>Created: <%= @image.created_at.strftime("%B %d, %Y") %></li>
+      <li>Updated: <%= @image.updated_at.strftime("%B %d, %Y") %></li>
+    </ul>
+  </section>
+
+  <section id="image-tags">
+    <h2>Tags</h2>
+    <ul>
+      <% @image.tag_list.each do |tag| %>
+        <li><%= link_to(tag, search_path(:q => tag)) %></li>
+      <% end %>
+    </ul>
+  </section>
+
+  <%= link_to('Edit Image', edit_image_path(@image), class: 'small button') %>
+</div>
+
+<div class="large-9 columns text-center" id="image-container">
+  <%= image_tag(@image.asset.url) %>
+</div>
+
+<div class="large-7 columns large-offset-4 end" id="comments-container">
+  <%= form_for(@comment, url: comments_path(@comment), :html => { :class => 'new-comment-form' }) do |f| %>
+    <%= f.text_area(:body, label: 'Comment') %>
+    <%= f.hidden_field(:image_owner_id, :value => @image.id) %>
+    <%= f.submit('New Comment') %>
+  <% end %>
+
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <div class="comment-top">
+        <%= link_to(comment.image_owner.uploader.username, comment.image_owner.uploader) %>
+        <span>(<%= comment.created_at.strftime('%B %d, %Y') %> - <%= comment.created_at.strftime('%H:%M') %>)</span>
+      </div>
+
+      <div class="comment-body"><%= comment.body %></div>
+    </div>
+  <% end %>
+
+  <%= will_paginate(@comments, renderer: FoundationPagination::Rails) %>
+</div>
