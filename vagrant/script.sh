@@ -14,5 +14,4 @@ sudo -u postgres createuser vagrant --createdb
 
 cd /home/vagrant/code/image_board
 sudo -u vagrant bundle install
-sudo -u vagrant rake db:create
-sudo -u vagrant rake db:migrate
+sudo -u vagrant rake db:create db:migrate
