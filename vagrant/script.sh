@@ -6,7 +6,7 @@ apt-get install nfs-common portmap -y # Needed for nfs
 apt-get install nodejs -y # Needed for asset pipeline
 apt-get install imagemagick -y # Needed for carrierwave
 apt-get install ruby-dev -y # Needed for rails
-apt-get install build-essential g++ # Needed for thin
+apt-get install build-essential g++ -y # Needed for thin
 
 gem install bundler
 
