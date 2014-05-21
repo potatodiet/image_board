@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
     else
       @user = User.new(user_params)
 
+      flash.now[:alert] = 'Invalid credentials'
       render(:new)
     end
   end
