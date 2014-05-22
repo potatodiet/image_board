@@ -7,6 +7,10 @@
     <%= f.password_field(:password, placeholder: 'Password') %>
   </div>
 
+  <div class="large-12 columns">
+    <%= recaptcha_tags(:display => { :theme => 'clean' }) %>
+  </div>
+
   <div class="large-6 columns end">
     <%= f.submit('Sign Up!') %>
   </div>
