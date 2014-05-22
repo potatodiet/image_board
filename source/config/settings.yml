@@ -1,3 +1,12 @@
 recaptcha:
   public_key: insert_public_key
   private_key: insert_private_key
+
+image:
+  # Amount of images shown on each page
+  per_page: 24
+  max_tags: 20
+
+comment:
+  # Amount of comments shown on each page
+  per_page: 12

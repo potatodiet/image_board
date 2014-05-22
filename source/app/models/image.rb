@@ -12,10 +12,12 @@ class Image < ActiveRecord::Base
   belongs_to(:uploader, :class_name => 'User')
   has_many(:comments, :foreign_key => 'image_owner_id')
 
-  # Amount of images on each page
-  self.per_page = 24
+  # Amount of images shown on each page
+  self.per_page = Settings.image.per_page
 
   def validate_tags
-    errors.add(:tag_list, 'Can not contain more than 20 tags') if tag_list.length > 20
+    if tag_list.length > Settings.image.max_tags
+      errors.add(:tag_list, "Can not contain more than #{Settings.image.max_tags} tags")
+    end
   end
 end
