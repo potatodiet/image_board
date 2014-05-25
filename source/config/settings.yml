@@ -10,3 +10,9 @@ image:
 comment:
   # Amount of comments shown on each page
   per_page: 12
+
+user:
+  attempts_before_captcha: 4
+  attempts_before_lockout: 7
+  # Time in minutes
+  lockout_time: 15

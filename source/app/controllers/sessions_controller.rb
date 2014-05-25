@@ -11,17 +11,24 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.authenticate(params[:user][:username], params[:user][:password])
+    @user = User.where(:username => params[:user][:username]).first ||= User.new
 
-    if @user
+    if !verify_recaptcha
+      render(:new)
+      return false
+    end
+
+    if !@user.authenticate(params[:user][:password]) && !@user.is_locked?
+      flash.now[:alert] = 'Invalid Credentials'
+      render(:new)
+    elsif @user.is_locked?
+      flash.now[:alert] =  "This account is locked for #{@user.lockout_time_left.to_s} " +
+          'minutes due to too many failed login attempts!'
+      render(:new)
+    else
       session[:user_id] = @user.id
 
       redirect_to(user_path(@user), :notice => 'Signed In!')
-    else
-      @user = User.new(user_params)
-
-      flash.now[:alert] = 'Invalid credentials'
-      render(:new)
     end
   end
 
@@ -32,7 +39,7 @@ class SessionsController < ApplicationController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:username, :password)
-    end
+  def user_params
+    params.require(:user).permit(:username, :password)
+  end
 end

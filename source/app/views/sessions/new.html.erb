@@ -1,4 +1,4 @@
-<%= form_for(@user, :url => sign_in_path) do |f| %>
+<%= form_for(@user, :method => 'POST', :url => sign_in_path) do |f| %>
   <div class="large-6 medium-6 columns">
     <%= f.text_field(:username, placeholder: 'Username') %>
   </div>
@@ -6,6 +6,12 @@
   <div class="large-6 medium-6 columns">
     <%= f.password_field(:password, placeholder: 'Password') %>
   </div>
+
+  <% if @user.needs_captcha? %>
+    <div class="large-12 columns">
+      <%= recaptcha_tags(:display => { :theme => 'clean' }) %>
+    </div>
+  <% end %>
 
   <div class="large-6 columns end">
     <%= f.submit('Sign In!') %>
