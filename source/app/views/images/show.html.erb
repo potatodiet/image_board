@@ -25,7 +25,7 @@
   <%= image_tag(@image.asset.url) %>
 </div>
 
-<div class="large-7 columns large-offset-4 end" id="comments-container">
+<div class="large-12 columns" id="comments-container">
   <%= form_for(@comment, url: comments_path(@comment), :html => { :class => 'new-comment-form' }) do |f| %>
     <%= f.text_area(:body, label: 'Comment') %>
     <%= f.hidden_field(:image_owner_id, :value => @image.id) %>
