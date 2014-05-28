@@ -3,6 +3,10 @@
     <%= f.text_field(:tag_list, placeholder: 'Tag One, Tag Two') %>
   </div>
 
+  <div class="large-6 columns">
+    <%= link_to('Destroy', @image, :method => :delete, :class => 'right button alert') %>
+  </div>
+
   <div class="large-12 columns">
     <%= image_tag(@image.asset.thumbnail.url) %>
     

@@ -32,10 +32,10 @@ class Ability
     can(:read, :all)
 
     if user
-      can([:create, :update], [Image, Comment])
+      can(:create, [Image, Comment])
 
-      can(:destroy, Image, :uploader => user)
-      can(:destroy, Comment, :commenter => user)
+      can([:destroy, :update], Image, :uploader => user)
+      can([:destroy, :update], Comment, :commenter => user)
       can(:destroy, :session)
     else
       can(:create, [User, :session])

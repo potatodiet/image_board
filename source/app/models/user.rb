@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of(:username)
   validates_presence_of(:password, :on => :create)
 
-  has_many(:images, :foreign_key => 'uploader_id')
-  has_many(:comments, :foreign_key => 'commenter_id')
+  has_many(:images, :foreign_key => 'uploader_id', :dependent => :destroy)
+  has_many(:comments, :foreign_key => 'commenter_id', :dependent => :destroy)
 
   def authenticate(password)
     return false if is_locked?

@@ -12,8 +12,11 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroys
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
 
+    redirect_to(@comment.image_owner, :notice => 'Comment Destroyed')
   end
 
   private
