@@ -35,7 +35,7 @@
   <% @comments.each do |comment| %>
     <div class="comment">
       <div class="comment-top">
-        <%= link_to(comment.image_owner.uploader.username, comment.image_owner.uploader) %>
+        <%= link_to(comment.commenter.username, comment.commenter) %>
         <span>(<%= comment.created_at.strftime('%B %d, %Y') %> - <%= comment.created_at.strftime('%H:%M') %>)</span>
       </div>
 

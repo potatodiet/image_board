@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates_presence_of(:password, :on => :create)
 
   has_many(:images, :foreign_key => 'uploader_id')
+  has_many(:comments, :foreign_key => 'commenter_id')
 
   def authenticate(password)
     return false if is_locked?

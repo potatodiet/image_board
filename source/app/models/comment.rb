@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to(:image_owner, :class_name => 'Image')
+  belongs_to(:commenter, :class_name => 'User')
 
   validates_presence_of(:body)
   validates_presence_of(:image_owner)
