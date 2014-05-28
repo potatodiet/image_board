@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter(:authenticate, :only => [:create])
+  load_and_authorize_resource
 
   def create
     @comment = Comment.new(comment_params)
@@ -10,6 +10,10 @@ class CommentsController < ApplicationController
     else
       redirect_to(:back, :notice => 'Comment Failed')
     end
+  end
+
+  def destroys
+
   end
 
   private

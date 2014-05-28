@@ -1,12 +1,7 @@
 class SessionsController < ApplicationController
-  before_filter(:already_signed_in, :only => [:new, :create])
-  before_filter(:authenticate, :only => [:destroy])
-
+  authorize_resource(:class => false)
+  
   def new
-    if session[:user_id]
-      redirect_to(root_path)
-    end
-
     @user = User.new
   end
 

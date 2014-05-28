@@ -1,5 +1,9 @@
 class ImagesController < ApplicationController
-  before_filter(:authenticate, :only => [:new, :create])
+  load_and_authorize_resource
+
+  def index
+    @images = Image.order('created_at desc').paginate(:page => params[:page])
+  end
 
   def new
     @image = Image.new

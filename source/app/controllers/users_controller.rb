@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter(:already_signed_in, :only => [:new, :create])
+  load_and_authorize_resource
   
   def new
     @user = User.new

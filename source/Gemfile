@@ -35,3 +35,6 @@ gem 'thin', '~> 1.6.2'
 gem 'recaptcha', :require => 'recaptcha/rails'
 
 gem 'rails_config'
+
+# Authorization
+gem 'cancancan', '~> 1.8'
