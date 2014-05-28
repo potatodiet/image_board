@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.where(:username => params[:user][:username]).first ||= User.new
 
-    if !verify_recaptcha
+    if @user.needs_captcha? && !verify_recaptcha
       render(:new)
       return false
     end
