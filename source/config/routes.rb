@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'images#index'
 
   get 'user/sign_up', to: 'users#new', as: 'sign_up'
   post 'user/sign_up', to: 'users#create'
