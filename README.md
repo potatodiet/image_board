@@ -28,4 +28,3 @@ rails server
 TODO
 ----------
 * Comment posting and pagination with AJAX
-* Different user groups (moderator, admin, etc.)
