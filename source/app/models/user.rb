@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   attr_accessor(:password)
 
   before_save(:encrypt_password)
+  after_initialize(:check_if_first_user)
 
   validates_presence_of(:username)
   validates_uniqueness_of(:username)
@@ -68,6 +69,12 @@ class User < ActiveRecord::Base
       if password.present?
         self.password_salt = BCrypt::Engine.generate_salt
         self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+      end
+    end
+
+    def check_if_first_user
+      if id == 1
+        self.role = 'admin'
       end
     end
 end
