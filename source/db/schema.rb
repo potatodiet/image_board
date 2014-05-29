@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140528200313) do
+ActiveRecord::Schema.define(version: 20140529122338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140528200313) do
     t.text     "password_salt"
     t.integer  "failed_login_attempts",       default: 0
     t.datetime "latest_failed_login_attempt"
+    t.string   "role",                        default: "regular"
   end
 
 end

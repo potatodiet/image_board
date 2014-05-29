@@ -31,14 +31,20 @@ class Ability
 
     can(:read, :all)
 
-    if user
-      can(:create, [Image, Comment])
-
-      can([:destroy, :update], Image, :uploader => user)
-      can([:destroy, :update], Comment, :commenter => user)
-      can(:destroy, :session)
-    else
+    unless user
       can(:create, [User, :session])
+    else
+      if user.role?(:regular)
+        can(:create, [Image, Comment])
+
+        can([:destroy, :update], Image, :uploader => user)
+        can([:destroy, :update], Comment, :commenter => user)
+        can(:destroy, :session)
+      end
+
+      if user.role?(:admin)
+        can(:manage, :all)
+      end
     end
   end
 end

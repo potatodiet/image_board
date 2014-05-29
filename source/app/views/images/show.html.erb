@@ -36,7 +36,7 @@
     <div class="comment">
       <div class="comment-top">
         <%= link_to(comment.commenter.username, comment.commenter) %>
-        <%= link_to('Destroy', comment, :method => :delete, :class => 'right') if comment.commenter == current_user %>
+        <%= link_to('Destroy', comment, :method => :delete, :class => 'right') if can?(:destroy, comment) %>
         <span>(<%= comment.created_at.strftime('%B %d, %Y') %> - <%= comment.created_at.strftime('%H:%M') %>)</span>
       </div>
 

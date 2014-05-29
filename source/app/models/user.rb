@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many(:images, :foreign_key => 'uploader_id', :dependent => :destroy)
   has_many(:comments, :foreign_key => 'commenter_id', :dependent => :destroy)
 
+  ROLES = %w[regular admin]
+
   def authenticate(password)
     return false if is_locked?
 
@@ -57,11 +59,15 @@ class User < ActiveRecord::Base
     return (Settings.user.lockout_time - (Time.now - latest_failed_login_attempt) / 60).ceil
   end
 
-  private
-  def encrypt_password
-    if password.present?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-    end
+  def role?(base_role)
+    return ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
+
+  private
+    def encrypt_password
+      if password.present?
+        self.password_salt = BCrypt::Engine.generate_salt
+        self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+      end
+    end
 end
