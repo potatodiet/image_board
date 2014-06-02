@@ -18,7 +18,7 @@
     </ul>
   </section>
 
-  <%= link_to('Edit Image', edit_image_path(@image), class: 'small button') %>
+  <%= link_to('Edit Image', edit_image_path(@image), class: 'small button') if can?(:edit, @image) %>
 </div>
 
 <div class="large-9 columns text-center" id="image-container">
