@@ -1,7 +1,6 @@
 #!/bin/sh
 
-apt-get install postgresql postgresql-contrib -y
-apt-get install libpq-dev -y # Needed for bundler
+apt-get install postgresql postgresql-contrib libpq-dev -y # Needed for postgresql
 apt-get install nfs-common portmap -y # Needed for nfs
 apt-get install nodejs -y # Needed for asset pipeline
 apt-get install imagemagick -y # Needed for carrierwave
