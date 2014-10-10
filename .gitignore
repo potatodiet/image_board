@@ -1,6 +1,6 @@
-/source/.bundle
-/source/log/*.log
-/source/tmp
-/source/public/uploads/
+.bundle
+log/
+tmp/
+public/uploads/
 /vagrant/.vagrant
 /.idea
