@@ -1,1 +1,1 @@
-User.create(username: "Admin", password: "Password123", role: "admin")
+User.create(username: "Admin", email: "test@test.test" ,password: "Password123", role: "admin")

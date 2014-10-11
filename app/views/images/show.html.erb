@@ -2,7 +2,7 @@
   <section id="image-details">
     <h2>Details</h2>
     <ul>
-      <li>Uploader: <%= link_to(@image.uploader.username, user_path(@image.uploader)) %></li>
+      <li>Uploader: <%= link_to(@image.uploader.name, user_path(@image.uploader)) %></li>
       <!-- Display time as May 13, 2014 -->
       <li>Created: <%= @image.created_at.strftime("%B %d, %Y") %></li>
       <li>Updated: <%= @image.updated_at.strftime("%B %d, %Y") %></li>
@@ -35,7 +35,7 @@
   <% @comments.each do |comment| %>
     <div class="comment">
       <div class="comment-top">
-        <%= link_to(comment.commenter.username, comment.commenter) %>
+        <%= link_to(comment.commenter.name, comment.commenter) %>
         <%= content_tag(:span, '[A]', class: 'commenter-admin', title: 'Admin') if comment.commenter.role == 'admin' %>
         <%= content_tag(:span, '[U]', class: 'commenter-uploader', title: 'Uploader') if comment.commenter == @image.uploader %>
         <%= link_to('Destroy', comment, :method => :delete, :class => 'right') if can?(:destroy, comment) %>

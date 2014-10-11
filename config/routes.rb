@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'images#index'
 
   get 'user/sign_up', to: 'users#new', as: 'sign_up'

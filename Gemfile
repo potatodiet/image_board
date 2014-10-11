@@ -39,6 +39,8 @@ gem 'rails_config'
 # Authorization
 gem 'cancancan', '~> 1.8'
 
+gem "devise", "~> 3.4.0"
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
 end
