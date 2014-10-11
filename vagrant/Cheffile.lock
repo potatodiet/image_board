@@ -1,0 +1,51 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    7-zip (1.0.2)
+      windows (>= 1.2.2)
+    apt (2.6.0)
+    ark (0.9.0)
+      7-zip (>= 0.0.0)
+      windows (>= 0.0.0)
+    build-essential (2.0.6)
+    chef-sugar (2.3.2)
+    chef_handler (1.1.6)
+    openssl (2.0.0)
+      chef-sugar (>= 0.0.0)
+    postgresql (3.4.10)
+      apt (>= 1.9.0)
+      build-essential (>= 0.0.0)
+      openssl (>= 0.0.0)
+    ruby_build (0.8.0)
+    windows (1.34.6)
+      chef_handler (>= 0.0.0)
+    yum (3.3.2)
+    yum-epel (0.5.1)
+      yum (~> 3.0)
+
+GIT
+  remote: https://github.com/fnichol/chef-rbenv
+  ref: master
+  sha: 0a3018634bafe58ad21c6ee271af015220e444b9
+  specs:
+    rbenv (0.7.3)
+
+GIT
+  remote: https://github.com/redguide/nodejs
+  ref: master
+  sha: 541d00120156065255a56c69dfc1b3ccb95bfdf2
+  specs:
+    nodejs (2.1.1)
+      apt (>= 0.0.0)
+      ark (>= 0.0.0)
+      build-essential (>= 0.0.0)
+      yum-epel (>= 0.0.0)
+
+DEPENDENCIES
+  apt (>= 0)
+  build-essential (>= 0)
+  nodejs (>= 0)
+  postgresql (>= 0)
+  rbenv (>= 0)
+  ruby_build (>= 0)
+
