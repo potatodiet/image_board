@@ -1,4 +1,8 @@
 .large-12.columns
   %h1= @user.name
 %hr/
-= render(:file => 'layouts/list_images')
+.large-12.columns
+  - @images.each_slice(6) do |grouped_images|
+    = render(grouped_images)
+.large-12.columns
+  = will_paginate(@images, renderer: FoundationPagination::Rails)
