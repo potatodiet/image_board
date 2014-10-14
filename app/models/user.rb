@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   ROLES = %w[regular admin]
 
   def role?(base_role)
-    return ROLES.index(base_role.to_s) <= ROLES.index(role)
+    ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
 end

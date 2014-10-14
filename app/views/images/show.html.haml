@@ -1,0 +1,35 @@
+#image-info.large-3.columns
+  %section#image-details
+    %h2 Details
+    %ul
+      %li
+        Uploader: #{link_to(@image.uploader.name, user_path(@image.uploader))}
+      / Display time as May 13, 2014
+      %li
+        Created: #{@image.created_at.strftime("%B %d, %Y")}
+      %li
+        Updated: #{@image.updated_at.strftime("%B %d, %Y")}
+  %section#image-tags
+    %h2 Tags
+    %ul
+      - @image.tag_list.each do |tag|
+        %li= link_to(tag, search_path(:q => tag))
+  = link_to('Edit Image', edit_image_path(@image), class: 'small button') if can?(:edit, @image)
+#image-container.large-9.columns.text-center
+  = image_tag(@image.asset.url)
+#comments-container.large-12.columns
+  = form_for(@comment, url: comments_path(@comment), :html => { :class => 'new-comment-form' }) do |f|
+    = f.text_area(:body, label: 'Comment')
+    = f.hidden_field(:image_owner_id, :value => @image.id)
+    = f.submit('New Comment')
+  - @comments.each do |comment|
+    .comment
+      .comment-top
+        = link_to(comment.commenter.name, comment.commenter)
+        = content_tag(:span, '[A]', class: 'commenter-admin', title: 'Admin') if comment.commenter.role == 'admin'
+        = content_tag(:span, '[U]', class: 'commenter-uploader', title: 'Uploader') if comment.commenter == @image.uploader
+        = link_to('Destroy', comment, :method => :delete, :class => 'right') if can?(:destroy, comment)
+        %span
+          (#{comment.created_at.strftime('%B %d, %Y')} - #{comment.created_at.strftime('%H:%M')})
+      .comment-body= comment.body
+  = will_paginate(@comments, renderer: FoundationPagination::Rails)

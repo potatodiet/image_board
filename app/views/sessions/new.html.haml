@@ -1,0 +1,10 @@
+= form_for(@user, :method => 'POST', :url => sign_in_path) do |f|
+  .large-6.medium-6.columns
+    = f.text_field(:username, placeholder: 'Username')
+  .large-6.medium-6.columns
+    = f.password_field(:password, placeholder: 'Password')
+  - if @user.needs_captcha?
+    .large-12.columns
+      = recaptcha_tags(:display => { :theme => 'clean' }, :ajax => true)
+  .large-6.columns.end
+    = f.submit('Sign In!')
