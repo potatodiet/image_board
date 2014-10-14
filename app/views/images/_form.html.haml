@@ -1,0 +1,5 @@
+= f.text_field(:tag_list, placeholder: "Tag One, Tag Two")
+
+= image_tag(@image.asset.thumbnail.url)
+= f.file_field(:asset, label: "Image")
+= f.hidden_field(:asset_cache)
