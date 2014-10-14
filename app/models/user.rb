@@ -1,4 +1,4 @@
-require 'bcrypt'
+require "bcrypt"
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   validates(:name, presence: true)
   validates(:email, presence: true)
 
-  has_many(:images, :foreign_key => 'uploader_id', :dependent => :destroy)
-  has_many(:comments, :foreign_key => 'commenter_id', :dependent => :destroy)
+  has_many(:images, foreign_key: "uploader_id", dependent: :destroy)
+  has_many(:comments, foreign_key: "commenter_id", dependent: :destroy)
 
   ROLES = %w[regular admin]
 

@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     @comment.commenter = current_user
 
     if @comment.save
-      redirect_to(:back, :notice => 'Comment Succeeded')
+      redirect_to(:back, notice: "Comment Succeeded")
     else
-      redirect_to(:back, :notice => 'Comment Failed')
+      redirect_to(:back, notice: "Comment Failed")
     end
   end
 
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
 
-    redirect_to(@comment.image_owner, :notice => 'Comment Destroyed')
+    redirect_to(@comment.image_owner, notice: "Comment Destroyed")
   end
 
   private

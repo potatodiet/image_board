@@ -37,8 +37,8 @@ class Ability
       if user.role?(:regular)
         can(:create, [Image, Comment])
 
-        can([:destroy, :update], Image, :uploader => user)
-        can([:destroy, :update], Comment, :commenter => user)
+        can([:destroy, :update], Image, uploader: user)
+        can([:destroy, :update], Comment, commenter: user)
         can(:destroy, :session)
       end
 

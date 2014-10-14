@@ -9,8 +9,8 @@ class Image < ActiveRecord::Base
 
   validate(:validate_tags)
 
-  belongs_to(:uploader, :class_name => 'User')
-  has_many(:comments, :foreign_key => 'image_owner_id', :dependent => :destroy)
+  belongs_to(:uploader, class_name: "User")
+  has_many(:comments, foreign_key: "image_owner_id", dependent: :destroy)
 
   # Amount of images shown on each page
   self.per_page = Settings.image.per_page
