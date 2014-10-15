@@ -2,6 +2,6 @@
 = f.text_field(:artist, placeholder: "Artist")
 = f.text_field(:source, placeholder: "Source")
 
-= image_tag(@image.asset.thumbnail.url)
+= image_tag(@image.asset.thumbnail.url) unless @image.asset.blank?
 = f.file_field(:asset, label: "Image")
 = f.hidden_field(:asset_cache)
