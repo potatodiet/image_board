@@ -18,18 +18,6 @@
 #image-container.large-9.columns.text-center
   = image_tag(@image.asset.url)
 #comments-container.large-12.columns
-  = form_for(@comment, url: comments_path(@comment), html: { class: "new-comment-form" }) do |f|
-    = f.text_area(:body, label: "Comment")
-    = f.hidden_field(:image_owner_id, value: @image.id)
-    = f.submit("New Comment")
-  - @comments.each do |comment|
-    .comment
-      .comment-top
-        = link_to(comment.commenter.name, comment.commenter)
-        = content_tag(:span, "[A]", class: "commenter-admin", title: "Admin") if comment.commenter.role == "admin"
-        = content_tag(:span, "[U]", class: "commenter-uploader", title: "Uploader") if comment.commenter == @image.uploader
-        = link_to("Destroy", comment, method: :delete, class: "right") if can?(:destroy, comment)
-        %span
-          (#{comment.created_at.strftime("%B %d, %Y")} - #{comment.created_at.strftime("%H:%M")})
-      .comment-body= comment.body
+  = render(partial: "comments/new", locals: {image: @image, comment: @comment})
+  = render(@comments)
   = will_paginate(@comments, renderer: FoundationPagination::Rails)
