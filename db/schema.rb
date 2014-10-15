@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015025806) do
+ActiveRecord::Schema.define(version: 20141015055132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20141015025806) do
     t.string   "asset"
     t.integer  "uploader_id"
     t.text     "artist"
+    t.text     "source"
   end
 
   create_table "taggings", force: true do |t|

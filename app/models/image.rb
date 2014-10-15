@@ -9,6 +9,9 @@ class Image < ActiveRecord::Base
   validates(:artist, length: { maximum: 15 })
 
   validate(:validate_tags)
+  validate(:validate_source)
+
+  before_save(:default_values)
 
   belongs_to(:uploader, class_name: "User")
   has_many(:comments, foreign_key: "image_owner_id", dependent: :destroy)
@@ -20,5 +23,18 @@ class Image < ActiveRecord::Base
     if tag_list.length > Settings.image.max_tags
       errors.add(:tag_list, "Can not contain more than #{Settings.image.max_tags} tags")
     end
+  end
+
+  def validate_source
+    if source
+      unless source.include?("://")
+        errors.add(:source, "We require an absolute link. Example: https://google.com")
+      end
+    end
+  end
+
+  def default_values
+    # ||= isn't working when updating
+    self.artist = "Unkown" if self.artist.blank?
   end
 end

@@ -2,15 +2,13 @@
   %section#image-details
     %h2 Details
     %ul
-      %li
-        Uploader: #{link_to(@image.uploader.name, user_path(@image.uploader))}
-      %li
-        Artist: #{@image.artist}
+      %li Uploader: #{link_to(@image.uploader.name, user_path(@image.uploader))}
+      %li Artist: #{@image.artist}
       / Display time as May 13, 2014
-      %li
-        Created: #{@image.created_at.strftime("%B %d, %Y")}
-      %li
-        Updated: #{@image.updated_at.strftime("%B %d, %Y")}
+      %li Created: #{@image.created_at.strftime("%B %d, %Y")}
+      %li Updated: #{@image.updated_at.strftime("%B %d, %Y")}
+      - if @image.source
+        %li Source: #{link_to_source(@image.source)}
   %section#image-tags
     %h2 Tags
     %ul
