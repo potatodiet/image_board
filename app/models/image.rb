@@ -6,6 +6,7 @@ class Image < ActiveRecord::Base
   validates_presence_of(:uploader)
   validates_presence_of(:asset)
   validates_presence_of(:tag_list)
+  validates(:artist, length: { maximum: 15 })
 
   validate(:validate_tags)
 

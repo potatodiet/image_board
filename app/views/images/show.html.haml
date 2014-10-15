@@ -4,6 +4,8 @@
     %ul
       %li
         Uploader: #{link_to(@image.uploader.name, user_path(@image.uploader))}
+      %li
+        Artist: #{@image.artist}
       / Display time as May 13, 2014
       %li
         Created: #{@image.created_at.strftime("%B %d, %Y")}
