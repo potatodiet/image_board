@@ -1,0 +1,5 @@
+= form_for(@image, html: {multipart: true}) do |f|
+  = link_to("Destroy", @image, method: :delete, class: "button alert")
+  = render(partial: "form", locals: {f: f})
+  = f.submit("Update Image!")
+  = link_to("Back", @image, class: "small radius warning button")

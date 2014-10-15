@@ -1,0 +1,46 @@
+# Suggested for Linux development
+# https://github.com/fgrehm/vagrant-lxc
+
+box         = "fgrehm/trusty64-lxc"
+source_path = "../"
+box_path    = "/home/vagrant/code/image_board"
+
+Vagrant.configure("2") do |config|
+  config.vm.box = box
+  config.vm.network("forwarded_port", guest: 3000, host: 3000)
+  config.vm.synced_folder(source_path, box_path)
+
+  config.omnibus.chef_version = :latest
+
+  # Use Chef Solo to provision our virtual machine
+  config.vm.provision(:chef_solo) do |chef|
+    chef.add_recipe("apt")
+    chef.add_recipe("nodejs")
+    chef.add_recipe("ruby_build")
+    chef.add_recipe("rbenv::user")
+    chef.add_recipe("rbenv::vagrant")
+    chef.add_recipe("postgresql::server")
+
+    chef.json = {
+      rbenv: {
+        user_installs: [{
+          user: "vagrant",
+          rubies: ["2.1.2"],
+          global: "2.1.2",
+          gems: {
+            "2.1.2" => [
+              { name: "bundler" }
+            ]
+          }
+        }]
+      },
+      postgresql: {
+        password: {
+          postgres: "vagrant"
+        }
+      }
+    }
+  end
+    
+  config.vm.provision("shell", path: "script.sh")
+end
