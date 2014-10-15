@@ -3,9 +3,9 @@ class Image < ActiveRecord::Base
 
   acts_as_taggable_on(:tags)
 
-  validates_presence_of(:uploader)
-  validates_presence_of(:asset)
-  validates_presence_of(:tag_list)
+  validates(:uploader, presence: true)
+  validates(:asset, presence: true)
+  validates(:tag_list, presence: true)
   validates(:artist, length: { maximum: 15 })
 
   validate(:validate_tags)
