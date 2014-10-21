@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get("user/sign_out", to: "sessions#destroy", as: "sign_out")
 
-  resources("users", only: [:show])
+  resources("users", only: [:show, :edit, :update])
   resources("images", only: [:new, :create, :show, :edit, :update, :destroy])
   resources("comments", only: [:create, :destroy])
 
