@@ -1,5 +1,7 @@
-.large-12.columns
+.large-10.columns
   %h1= @user.name
+.large-2.columns
+  .right= link_to("Edit", edit_user_path, class: "button") if can?(:edit, @user)
 %hr/
 .large-12.columns
   - @images.each_slice(6) do |grouped_images|
