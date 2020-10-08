@@ -28,3 +28,6 @@ rails server
 TODO
 ----------
 * Comment posting and pagination with AJAX
+
+# Licensing
+Licensed under AGPL-3.0-only
