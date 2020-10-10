@@ -197,6 +197,8 @@ GEM
     nokogiri (1.10.10-x86-mingw32)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    pg (1.2.3)
+    pg (1.2.3-x86-mingw32)
     public_suffix (4.0.6)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -321,6 +323,7 @@ DEPENDENCIES
   jquery-rails
   listen
   mini_magick
+  pg
   rails
   recaptcha
   rspec-rails
