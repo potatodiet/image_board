@@ -5,36 +5,29 @@
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     %title= content_for?(:title) ? yield(:title) : "Image Board"
     = stylesheet_link_tag    "application"
-    = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .contain-to-grid
-      %nav#navbar.top-bar{"data-topbar" => ""}
-        %ul.title-area
-          %li.name
-            %h1= link_to("Image Board", root_path)
-          %li.toggle-topbar.menu-icon
-            %a{:href => "#"}
-              %span Menu
-        %section.top-bar-section
-          %ul.left
+    %nav#navbar
+      .top-bar{"data-topbar" => ""}
+        .large-4.top-bar-left
+          %ul.menu{"data-dropdown-menu" => ""}
+            %li= link_to("Image Board", root_path)
             %li= link_to("Upload Image", new_image_path)
-          %ul.right
-            / Search form
+        .large-8.top-bar-right
+          %ul.menu{"data-dropdown-menu" => ""}
             %li.has-form
               = form_tag(search_path, method: "get") do
-                .row.collapse
-                  .large-8.small-9.columns
-                    = text_field_tag("q", params[:q], placeholder: "Tag One, Tag Two")
-                  .large-4.small-3.columns
-                    = submit_tag("Search", name: nil, class: "alert button expand")
+                %ul.menu{"data-dropdown-menu" => ""}
+                  = text_field_tag("q", params[:q], placeholder: "Tag One, Tag Two")
+                  = submit_tag("Search", name: nil, class: "button")
             - if current_user
               %li= link_to("Profile", user_path(current_user))
               %li= link_to("Sign Out", destroy_user_session_path, method: :delete)
             - else
               %li= link_to("Sign In", new_user_session_path)
               %li= link_to("Sign Up", new_user_registration_path)
-    .row
-      = display_flash_messages
-      = yield
-    = javascript_include_tag "application"
+    .grid-container
+      .grid-x
+        = display_flash_messages
+        = yield

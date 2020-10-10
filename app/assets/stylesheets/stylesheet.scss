@@ -1,7 +1,13 @@
-@import "foundation";
+@import "foundation_and_overrides";
 
 #navbar {
   margin-bottom: 30px;
+  background-color: rgb(230, 230, 230);
+}
+
+.top-bar {
+  max-width: 75rem;
+  margin: 0 auto;
 }
 
 #image-info h2 {

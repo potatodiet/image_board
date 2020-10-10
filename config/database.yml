@@ -1,16 +1,16 @@
 default: &default
-  adapter: postgresql
+  adapter: sqlite3
   encoding: unicode
   pool: 5
 
 development:
   <<: *default
-  database: dev_db
+  database: db/dev_db.sqlite3
 
 test:
   <<: *default
-  database: test_db
+  database: db/test_db.sqlite3
 
 production:
   <<: *default
-  database: production_db
+  database: db/production_db.sqlite3

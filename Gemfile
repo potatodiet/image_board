@@ -1,23 +1,21 @@
 source "https://rubygems.org"
 
-gem "rails", "4.1.1"
-gem "pg"
+gem "rails"
 
 # Assets
-gem "sass-rails", "~> 4.0.3"
-gem "uglifier", "~> 1.3.0"
-gem "coffee-rails", "~> 4.0.0"
+gem "uglifier"
 gem "foundation-rails"
 gem "foundation_rails_helper"
+gem "autoprefixer-rails"
 gem "haml-rails"
+gem "sassc"
+
+gem "dotenv-rails"
 
 gem "jquery-rails"
 gem "turbolinks"
 
-gem "bcrypt", "~> 3.1.7"
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: [:mingw, :mswin]
+gem "bcrypt"
 
 # Image uploading
 gem "carrierwave"
@@ -31,17 +29,21 @@ gem "acts-as-taggable-on"
 gem "will_paginate"
 gem "will_paginate-foundation"
 
-gem "thin", "~> 1.6.2"
+gem "thin"
 
 gem "recaptcha", require: "recaptcha/rails"
 
-gem "rails_config"
+gem "config"
 
 # Authorization
-gem "cancancan", "~> 1.8"
+gem "cancancan"
 
-gem "devise", "~> 3.4.0"
+gem "devise"
+
+gem "listen"
+
+gem "sqlite3"
 
 group :development, :test do
-  gem "rspec-rails", "~> 3.0.0"
+  gem "rspec-rails"
 end
