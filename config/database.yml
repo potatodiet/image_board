@@ -1,17 +1,23 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+
+  host: localhost
+  port: 7474
+  
   encoding: unicode
   pool: 5
 
+  username: image_board
+  password: 12345
+
 development:
   <<: *default
-  database: db/dev_db.sqlite3
+  database: db_dev
 
 test:
   <<: *default
-  database: db/test_db.sqlite3
+  database: db_test
 
 production:
   <<: *default
-  adapter: postgresql
   database: db_production
