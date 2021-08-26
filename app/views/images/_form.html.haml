@@ -1,4 +1,4 @@
-= f.text_field(:tag_list, placeholder: "Tag One, Tag Two")
+= f.text_field(:tag_list, placeholder: "Tag One, Tag Two", value: @image.tag_list.to_s)
 = f.text_field(:artist, placeholder: "Artist")
 = f.text_field(:source, placeholder: "Source")
 
