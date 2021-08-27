@@ -37,6 +37,11 @@
   }
 }
 
+#images {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 #image-container {
   margin-bottom: 40px;
 }
