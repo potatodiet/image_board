@@ -1,23 +1,23 @@
 default: &default
   adapter: postgresql
 
-  host: localhost
-  port: 7474
+  host: <%= ENV["DB_HOST"] %>
+  port: <%= ENV["DB_PORT"] %>
   
   encoding: unicode
   pool: 5
 
-  username: image_board
-  password: 12345
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASS"] %>
 
 development:
   <<: *default
-  database: db_dev
+  database: ib_dev
 
 test:
   <<: *default
-  database: db_test
+  database: ib_test
 
 production:
   <<: *default
-  database: db_production
+  database: <%= ENV["DB_NAME"] %>

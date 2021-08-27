@@ -42,6 +42,8 @@ gem "devise"
 
 gem "listen"
 
+gem "dotenv", "~> 2.7"
+
 group :development, :test do
   gem "rspec-rails"
 end

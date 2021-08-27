@@ -1,16 +1,16 @@
-Image Board
-----------
+# Image Board
 Just a typical danbooru-style image board.
 
-Requirements
-----------
-* PostgreSQL
+# Requirements
+* Postgres
 * ImageMagick
 * Ruby (3.0+)
 * Node.js (Linux only)
 
-Development Setup
-----------
+# How To Run
+    # Fill in your environment variables.
+    cp .env.example .env
+
     bundle install
     bin/rake db:setup
     bin/rails server

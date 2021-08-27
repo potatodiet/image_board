@@ -314,6 +314,7 @@ DEPENDENCIES
   carrierwave
   config
   devise
+  dotenv (~> 2.7)
   dotenv-rails
   foundation-rails
   foundation_rails_helper
