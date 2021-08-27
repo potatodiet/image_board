@@ -9,24 +9,26 @@
     = csrf_meta_tags
   %body
     %nav#navbar
-      .top-bar{"data-topbar" => ""}
-        .large-4.top-bar-left
-          %ul.menu{"data-dropdown-menu" => ""}
-            %li= link_to("Image Board", root_path)
-            %li= link_to("Upload Image", new_image_path)
-        .large-8.top-bar-right
-          %ul.menu{"data-dropdown-menu" => ""}
-            %li.has-form
-              = form_tag(search_path, method: "get") do
-                %ul.menu{"data-dropdown-menu" => ""}
-                  = text_field_tag("q", params[:q], placeholder: "Tag One, Tag Two")
-                  = submit_tag("Search", name: nil, class: "button")
-            - if current_user
-              %li= link_to("Profile", user_path(current_user))
-              %li= link_to("Sign Out", destroy_user_session_path, method: :delete)
-            - else
-              %li= link_to("Sign In", new_user_session_path)
-              %li= link_to("Sign Up", new_user_registration_path)
+      .grid-container
+        .top-bar
+          .top-bar-left
+            %ul.menu
+              %li= link_to("Home", root_path)
+              %li= link_to("Upload Image", new_image_path)
+          .top-bar-right
+            %ul.menu
+              %li.has-form
+                = form_tag(search_path, method: "get") do
+                  %ul.menu
+                    %li= text_field_tag("q", params[:q], placeholder: "Tag One, Tag Two")
+                    %li= submit_tag("Search", name: nil, class: "button")
+              - if current_user
+                %li= link_to("Profile", user_path(current_user))
+                %li= link_to("Sign Out", destroy_user_session_path, method: :delete)
+              - else
+                %li= link_to("Sign In", new_user_session_path)
+                %li= link_to("Sign Up", new_user_registration_path)
+
     .grid-container
       .grid-x
         = display_flash_messages
