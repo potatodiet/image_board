@@ -4,11 +4,11 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.commenter = current_user
-
+    
     if @comment.save
-      redirect_to(:back, notice: "Comment Succeeded")
+      redirect_back(fallback_location: @comment.image_owner, notice: "Comment Succeeded")
     else
-      redirect_to(:back, notice: "Comment Failed")
+      redirect_back(fallback_location: @comment.image_owner, notice: "Comment Failed")
     end
   end
 
