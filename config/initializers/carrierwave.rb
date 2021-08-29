@@ -4,7 +4,7 @@ CarrierWave.configure do |config|
   if Rails.env.production? || ENV['STORAGE_TYPE'] == 'aws'
     config.storage = :aws
     config.aws_bucket = ENV.fetch('AWS_BUCKET_NAME')
-    config.aws_acl    = 'private'
+    config.aws_acl    = 'public-read'
 
     # The maximum period for authenticated_urls is only 7 days.
     config.aws_authenticated_url_expiration = 60 * 60 * 24 * 7
