@@ -44,7 +44,7 @@ class Ability
 
       if user.role?(:admin)
         can(:manage, :all)
-        can(:assign_roles)
+        can(:assign_roles, User)
       end
     end
   end
