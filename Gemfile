@@ -19,6 +19,7 @@ gem "bcrypt"
 
 # Image uploading
 gem "carrierwave"
+gem "carrierwave-aws"
 
 # Image processing
 gem "mini_magick"
