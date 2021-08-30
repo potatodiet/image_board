@@ -4,23 +4,27 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.commenter = current_user
-    
+
     if @comment.save
-      redirect_back(fallback_location: @comment.image_owner, notice: "Comment Succeeded")
+      redirect_back(fallback_location: @comment.image_owner)
     else
-      redirect_back(fallback_location: @comment.image_owner, notice: "Comment Failed")
+      redirect_back(fallback_location: @comment.image_owner, alert: 'Failed to post comment.')
     end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
 
-    redirect_to(@comment.image_owner, notice: "Comment Destroyed")
+    if @comment.destroy
+      redirect_to(@comment.image_owner)
+    else
+      redirect_to(@comment.image_owner, alert: 'Failed to delete comment.')
+    end
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:body, :image_owner_id)
-    end
+
+  def comment_params
+    params.require(:comment).permit(:body, :image_owner_id)
+  end
 end

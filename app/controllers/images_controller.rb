@@ -16,7 +16,7 @@ class ImagesController < ApplicationController
     @image.uploader = current_user
 
     if @image.save
-      redirect_to(image_path(@image), notice: 'Uploaded Image!')
+      redirect_to(image_path(@image))
     else
       render(:new)
     end
@@ -36,7 +36,7 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
 
     if @image.update(image_params)
-      redirect_to(image_path(@image), notice: 'Updated Image!')
+      redirect_to(image_path(@image))
     else
       render(:edit)
     end
@@ -44,9 +44,12 @@ class ImagesController < ApplicationController
 
   def destroy
     @image = Image.find(params[:id])
-    @image.destroy
 
-    redirect_to(root_path, notice: 'Destroyed Image')
+    if @image.destroy
+      redirect_to(root_path)
+    else
+      redirect_to(root_path, alert: 'Failed to delete image.')
+    end
   end
 
   private
