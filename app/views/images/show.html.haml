@@ -18,6 +18,7 @@
 #image-container.large-9.columns.text-center
   = image_tag(@image.asset.url)
 #comments-container.large-12.columns
-  = render(partial: "comments/new", locals: {image: @image, comment: @comment})
+  - if current_user
+    = render(partial: "comments/new", locals: {image: @image, comment: @comment})
   = render(@comments)
   = will_paginate(@comments, renderer: FoundationPagination::Rails)
