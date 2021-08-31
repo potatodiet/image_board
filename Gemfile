@@ -3,19 +3,12 @@ source "https://rubygems.org"
 gem "rails", "~> 6.1"
 
 # Assets
-gem "uglifier"
 gem "foundation-rails"
 gem "foundation_rails_helper"
-gem "autoprefixer-rails"
 gem "haml-rails"
 gem "sassc"
 
 gem "dotenv-rails"
-
-gem "jquery-rails"
-gem "turbolinks"
-
-gem "bcrypt"
 
 # Image uploading
 gem "carrierwave"
@@ -32,18 +25,15 @@ gem "will_paginate-foundation"
 
 gem "thin"
 
-gem "recaptcha", require: "recaptcha/rails"
-
 gem "config"
 
 # Authorization
 gem "cancancan"
 
 gem "devise"
+gem "bcrypt"
 
 gem "listen"
-
-gem "dotenv", "~> 2.7"
 
 group :development, :test do
   gem "rspec-rails"
