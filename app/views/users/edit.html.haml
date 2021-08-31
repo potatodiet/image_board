@@ -1,4 +1,5 @@
-= form_for(@user, url: user_path, method: :patch) do |f|
-  = render(partial: "form", locals: {f: f})
-  = f.submit("Save Changes")
-  = link_to("Back", :back, class: "small radius warning button")
+.cell
+  = form_for(@user, url: user_path, method: :patch) do |f|
+    = render(partial: "form", locals: {f: f})
+    = f.submit("Save Changes")
+    = link_to("Back", :back, class: "small radius warning button")
