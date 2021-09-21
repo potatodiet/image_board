@@ -7,6 +7,7 @@ gem "foundation-rails"
 gem "foundation_rails_helper"
 gem "haml-rails"
 gem "sassc"
+gem "jquery-rails"
 
 gem "dotenv-rails"
 
