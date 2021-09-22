@@ -1,6 +1,8 @@
 # Image Board
 Just a typical danbooru-style image board.
 
+A demo can be found at [ib.potatodiet.ca](https://ib.potatodiet.ca).
+
 # Requirements
 * Postgres
 * ImageMagick
